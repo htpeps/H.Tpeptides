@@ -1,24 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-history.scrollRestoration = "manual";
-
-window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: "instant"
-});
-const cartButton = document.getElementById("cartButton");
-const cartDrawer = document.getElementById("cartDrawer");
-const closeCart = document.getElementById("closeCart");
 const menuButton = document.getElementById("menuButton");
 const mobileMenu = document.getElementById("mobileMenu");
 
-if (menuButton && mobileMenu) {
-    menuButton.onclick = function () {
-        alert("Menu clicked");
-mobileMenu.classList.toggle("open");
-    };
+if(menuButton && mobileMenu){
+    menuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("open");
+    });
 }
+
+const cartButton = document.getElementById("cartButton");
+const cartDrawer = document.getElementById("cartDrawer");
+const closeCart = document.getElementById("closeCart");
+
 const cartCount = document.getElementById("cartCount");
 const basketItems = document.getElementById("basketItems");
 const basketTotal = document.getElementById("basketTotal");
@@ -63,33 +57,32 @@ document.querySelectorAll(".addToCart").forEach(button => {
 
 function updateCart(){
 
-    basketItems.innerHTML = "";
+    basketItems.innerHTML="";
 
-    if(basket.length === 0){
+    if(basket.length===0){
 
-        basketItems.innerHTML = "<p>Your basket is empty.</p>";
+        basketItems.innerHTML="<p>Your basket is empty.</p>";
 
-        cartCount.textContent = "0";
+        cartCount.textContent="0";
 
-        basketTotal.textContent = "0";
+        basketTotal.textContent="0";
 
         return;
 
     }
 
-    let total = 0;
-    let items = 0;
+    let total=0;
+    let items=0;
 
     basket.forEach((item,index)=>{
 
-        total += item.price * item.qty;
-        items += item.qty;
+        total+=item.price*item.qty;
 
-        basketItems.innerHTML += `
+        items+=item.qty;
+
+        basketItems.innerHTML+=`
         <div class="cartItem">
-
             <strong>${item.name}</strong>
-
             <p>£${item.price} × ${item.qty}</p>
 
             <button class="minus" data-index="${index}">−</button>
@@ -103,8 +96,9 @@ function updateCart(){
 
     });
 
-    cartCount.textContent = items;
-    basketTotal.textContent = total;
+    cartCount.textContent=items;
+
+    basketTotal.textContent=total;
 
     document.querySelectorAll(".plus").forEach(button=>{
 
@@ -164,11 +158,11 @@ checkoutButton.addEventListener("click",()=>{
 
     basket.forEach(item=>{
 
-        message += `${item.name} x${item.qty} - £${item.price*item.qty}%0A`;
+        message+=`${item.name} x${item.qty} - £${item.price*item.qty}%0A`;
 
     });
 
-    message += `%0AOrder Total: £${basketTotal.textContent}`;
+    message+=`%0ATotal: £${basketTotal.textContent}`;
 
     window.open(
         "https://wa.me/447456872851?text="+message,
