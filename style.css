@@ -129,111 +129,35 @@ nav a:hover{
    HERO
    ========================== */
 .hero{
-
     min-height:100vh;
-
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
     text-align:center;
+    position:relative;
+    overflow:hidden;
 
-    padding:140px 8% 80px;
+    padding:140px 8%;
 
     background:
-    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.88));
+    linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.88)),
+    url("images/hero.jpg")
 
+    background-size:cover;
+    background-position:center;
 }
-
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at top,
+        rgba(212,175,55,.18),
+        transparent 60%);
+}
 
 .heroContent{
-
-    max-width:850px;
-
-}
-
-.heroTag{
-
-    color:#D4AF37;
-
-    font-weight:700;
-
-    letter-spacing:3px;
-
-    margin-bottom:20px;
-
-}
-
-.hero h1{
-
-    font-size:64px;
-
-    margin-bottom:25px;
-
-    font-weight:800;
-
-}
-
-.hero p{
-
-    color:#d6d6d6;
-
-    font-size:20px;
-
-    margin-bottom:40px;
-
-}
-
-.heroButtons{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:20px;
-
-    flex-wrap:wrap;
-
-}
-
-.primaryButton,
-.secondaryButton{
-
-    padding:16px 34px;
-
-    border-radius:50px;
-
-    text-decoration:none;
-
-    font-weight:700;
-
-    transition:.3s;
-
-}
-
-.primaryButton{
-
-    background:#D4AF37;
-
-    color:#000;
-
-}
-
-.secondaryButton{
-
-    border:2px solid #D4AF37;
-
-    color:#D4AF37;
-
-}
-
-.primaryButton:hover,
-.secondaryButton:hover{
-
-    transform:translateY(-3px);
-
+    position:relative;
+    z-index:2;
 }
 /* ==========================
    FEATURES
