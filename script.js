@@ -1,15 +1,42 @@
 const basket = [];
 
-const buttons = document.querySelectorAll(".card button");
+const basketItems = document.getElementById("basket-items");
+const basketCount = document.getElementById("basket-count");
+const checkout = document.getElementById("checkout");
 
-buttons.forEach(button => {
+document.querySelectorAll(".card button").forEach(button => {
+
     button.addEventListener("click", () => {
+
         const card = button.parentElement;
-        const name = card.querySelector("h3").innerText;
+        const product = card.querySelector("h3").innerText;
 
-        basket.push(name);
+        basket.push(product);
 
-        alert(`${name} added to basket!`);
-        console.log(basket);
+        updateBasket();
+
     });
+
 });
+
+function updateBasket(){
+
+    basketItems.innerHTML = "";
+
+    basket.forEach(item => {
+        basketItems.innerHTML += item + "<br>";
+    });
+
+    basketCount.innerText = basket.length;
+
+    const message =
+`Hello HT Peptides,
+
+I'd like to order:
+
+${basket.join("\n")}`;
+
+    checkout.href =
+"https://wa.me/441234567890?text=" + encodeURIComponent(message);
+
+}
