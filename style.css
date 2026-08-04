@@ -128,7 +128,6 @@ nav a:hover{
 /* ==========================
    HERO
    ========================== */
-
 .hero{
 
     min-height:100vh;
@@ -147,6 +146,7 @@ nav a:hover{
     linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.88));
 
 }
+
 
 .heroContent{
 
