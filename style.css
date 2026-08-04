@@ -138,13 +138,13 @@ nav a:hover{
     overflow:hidden;
 
     padding:140px 8%;
-
-   background:
+background:
     linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.88)),
     url("28B30026-166D-4AC4-8E1B-E4856A9A6C5C.png")
 
     background-size:cover;
     background-position:center; 
+   
 }
 .hero::before{
     content:"";
