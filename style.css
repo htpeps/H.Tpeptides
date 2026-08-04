@@ -29,30 +29,18 @@ body{
    ========================== */
 
 .header{
-
     position:fixed;
-
     top:0;
     left:0;
-
     width:100%;
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
-    padding:20px 8%;
-
-    background:rgba(8,8,8,.85);
-
+    padding:15px 6%;
+    background:rgba(8,8,8,.92);
     backdrop-filter:blur(15px);
-
     border-bottom:1px solid rgba(212,175,55,.25);
-
     z-index:1000;
-
 }
 
 .logo{
@@ -72,13 +60,10 @@ body{
 }
 
 nav{
-
     display:flex;
-
-    gap:30px;
-
+    gap:20px;
+    align-items:center;
 }
-
 nav a{
 
     color:white;
