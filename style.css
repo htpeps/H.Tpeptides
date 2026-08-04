@@ -139,12 +139,12 @@ nav a:hover{
 
     padding:140px 8%;
 
-    background:
+   background:
     linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.88)),
     url("images/IMG_5376.png")
 
     background-size:cover;
-    background-position:center;
+    background-position:center; 
 }
 .hero::before{
     content:"";
