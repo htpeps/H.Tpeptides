@@ -1,180 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HT Peptides</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HT Peptides | Premium Research Peptides</title>
+
+    <meta name="description" content="Premium research peptides supplied for laboratory research purposes.">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
-<div id="basket">
-    <h3>🛒 Basket</h3>
-
-    <div id="basket-items">
-        Your basket is empty.
-    </div>
-
-    <p><strong>Total Items:</strong> <span id="basket-count">0</span></p>
-
-    <a id="checkout"
-       class="button"
-       href="https://wa.me/447456872851"
-       target="_blank">
-       Checkout via WhatsApp
-    </a>
-</div>
 <header class="header">
 
     <div class="logo">
-        <span class="gold">HT</span> PEPTIDES
+        <span>HT</span> PEPTIDES
     </div>
 
-    <nav class="nav">
+    <nav>
 
         <a href="#home">Home</a>
         <a href="#products">Products</a>
         <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
 
     </nav>
 
-    <button id="cart-button" class="cart-button">
-        🛒 <span id="cart-count">0</span>
+    <button id="cartButton" class="cartButton">
+
+        🛒
+        <span id="cartCount">0</span>
+
     </button>
+
 </header>
 
-<section class="hero">
+<div id="cartDrawer" class="cartDrawer">
 
-<h1>Premium Research Peptides</h1>
+    <div class="cartHeader">
 
-<p>
-High purity laboratory research compounds.
-For laboratory research purposes only.
-</p>
+        <h2>Your Basket</h2>
 
-<a href="#products" class="button">
-Browse Products
-</a>
+        <button id="closeCart">
+            ✕
+        </button>
+
+    </div>
+
+    <div id="basketItems">
+
+        Your basket is empty.
+
+    </div>
+
+    <div class="cartFooter">
+
+        <h3>
+            Total:
+            £<span id="basketTotal">0</span>
+        </h3>
+
+        <button id="checkoutButton" class="checkoutButton">
+            Checkout via WhatsApp
+        </button>
+
+    </div>
+
+</div>
+
+<section id="home" class="hero">
+
+    <div class="heroOverlay"></div>
+
+    <div class="heroContent">
+
+        <p class="heroTag">
+
+            PREMIUM • RESEARCH GRADE • UK
+
+        </p>
+
+        <h1>
+
+            Premium Research Peptides
+
+        </h1>
+
+        <p>
+
+            High purity laboratory research compounds supplied with premium presentation and secure UK ordering.
+
+        </p>
+
+        <div class="heroButtons">
+
+            <a href="#products" class="primaryButton">
+                Shop Products
+            </a>
+
+            <a href="#about" class="secondaryButton">
+                Learn More
+            </a>
+
+        </div>
+
+    </div>
 
 </section>
-<section class="trust">
 
-    <div class="trust-box">
-        <span>🧪</span>
+<section class="features">
+
+    <div class="feature">
+
+        🧪
+
         <h3>Research Grade</h3>
-        <p>High quality laboratory compounds.</p>
+
+        <p>Premium laboratory compounds.</p>
+
     </div>
 
-    <div class="trust-box">
-        <span>📦</span>
-        <h3>Secure Packaging</h3>
-        <p>Discreet and carefully packaged.</p>
-    </div>
+    <div class="feature">
 
-    <div class="trust-box">
-        <span>🚚</span>
+        🚚
+
         <h3>Fast Dispatch</h3>
-        <p>Quick UK order processing.</p>
+
+        <p>Quick UK processing.</p>
+
     </div>
 
-    <div class="trust-box">
-        <span>⭐</span>
-        <h3>Premium Quality</h3>
-        <p>Supplied for laboratory research use.</p>
+    <div class="feature">
+
+        🔒
+
+        <h3>Secure Ordering</h3>
+
+        <p>Simple WhatsApp checkout.</p>
+
     </div>
 
 </section>
+
 <section id="products">
 
-<h2>Research Products</h2>
+<h2>Featured Products</h2>
 
-<div class="products">
+<div class="productGrid">
 
-<div class="card">
+<div class="productCard">
+    <div class="productImage">
+        <img src="images/mt2.webp" alt="MT2 10mg">
+    </div>
 
-<div class="product-image">
-🧪
+    <h3>MT2 10mg</h3>
+    <p>Premium research peptide.</p>
+
+    <div class="price">£25</div>
+
+    <button class="addToCart"
+        data-name="MT2 10mg"
+        data-price="25">
+        Add to Basket
+    </button>
 </div>
 
-<h3>MT2 10mg</h3>
+<div class="productCard">
+    <div class="productImage">
+        <img src="images/reta30.webp" alt="Retatrutide 30mg">
+    </div>
 
-<p class="description">
-Premium research peptide.
-</p>
+    <h3>Retatrutide 30mg</h3>
+    <p>Premium research peptide.</p>
 
-<p class="price">
-£25.00
-</p>
+    <div class="price">£60</div>
 
-<button>Add to Basket</button>
-
-</div>
-<div class="card">
-<h3>Retatrutide 30mg</h3>
-<p class="description">Premium research peptide.</p>
-<p class="price">£60.00</p>
-<button>Add to Basket</button>
+    <button class="addToCart"
+        data-name="Retatrutide 30mg"
+        data-price="60">
+        Add to Basket
+    </button>
 </div>
 
-<div class="card">
-<h3>Retatrutide 60mg</h3>
-<p class="description">Premium research peptide.</p>
-<p class="price">£80.00</p>
-<button>Add to Basket</button>
+<div class="productCard">
+    <div class="productImage">
+        <img src="images/reta60.webp" alt="Retatrutide 60mg">
+    </div>
+
+    <h3>Retatrutide 60mg</h3>
+    <p>Premium research peptide.</p>
+
+    <div class="price">£80</div>
+
+    <button class="addToCart"
+        data-name="Retatrutide 60mg"
+        data-price="80">
+        Add to Basket
+    </button>
 </div>
 
-<div class="card">
-<h3>Glow 10mg</h3>
-<p class="description">Premium research peptide.</p>
-<p class="price">£40.00</p>
-<button>Add to Basket</button>
+<div class="productCard">
+    <div class="productImage">
+        <img src="images/glow.webp" alt="Glow 10mg">
+    </div>
+
+    <h3>Glow 10mg</h3>
+    <p>Premium research peptide.</p>
+
+    <div class="price">£40</div>
+
+    <button class="addToCart"
+        data-name="Glow 10mg"
+        data-price="40">
+        Add to Basket
+    </button>
 </div>
 
-<div class="card">
-<h3>Bacteriostatic Water</h3>
-<p class="description">Sterile laboratory water.</p>
-<p class="price">£5.00</p>
-<button>Add to Basket</button>
+<div class="productCard">
+    <div class="productImage">
+        <img src="images/bacwater.webp" alt="Bacteriostatic Water">
+    </div>
+
+    <h3>Bacteriostatic Water</h3>
+    <p>Sterile laboratory water.</p>
+
+    <div class="price">£5</div>
+
+    <button class="addToCart"
+        data-name="Bacteriostatic Water"
+        data-price="5">
+        Add to Basket
+    </button>
 </div>
 
 </div>
+</section>
+
+<section id="about" class="about">
+
+    <h2>About HT Peptides</h2>
+
+    <p>
+        HT Peptides supplies premium laboratory research compounds.
+        Every product is presented with quality, reliability and secure
+        UK ordering in mind.
+
+        Products are supplied strictly for laboratory research purposes only.
+    </p>
 
 </section>
 
-<section id="about">
+<section id="faq" class="faq">
 
-<h2>About HT Peptides</h2>
+    <h2>Frequently Asked Questions</h2>
 
-<p>
-HT Peptides supplies high-quality laboratory research compounds.
-All products are intended strictly for laboratory research purposes only.
-</p>
+    <div class="faqItem">
+        <h3>Who are your products intended for?</h3>
+        <p>Products are supplied strictly for laboratory research purposes only.</p>
+    </div>
+
+    <div class="faqItem">
+        <h3>How do I place an order?</h3>
+        <p>Add products to your basket and checkout through WhatsApp.</p>
+    </div>
+
+    <div class="faqItem">
+        <h3>How quickly are orders processed?</h3>
+        <p>Orders are processed as quickly as possible after confirmation.</p>
+    </div>
 
 </section>
 
-<section id="contact">
+<section id="contact" class="contact">
 
-<h2>Contact</h2>
+    <h2>Contact</h2>
 
-<p>
-Order via WhatsApp.
-</p>
+    <p>
+        Need help with an order?
+    </p>
 
-<a class="button" href="https://wa.me/447456872851">
-Message on WhatsApp
-</a>
+    <a class="primaryButton"
+       href="https://wa.me/447456872851"
+       target="_blank">
+
+        Message on WhatsApp
+
+    </a>
 
 </section>
 
 <footer>
 
-© 2026 HT Peptides
+    <div class="footerLogo">
+        HT PEPTIDES
+    </div>
+
+    <p>
+        © 2026 HT Peptides
+    </p>
+
+    <small>
+        All products are supplied strictly for laboratory research purposes only.
+    </small>
 
 </footer>
 
 <script src="script.js"></script>
-</body>
 
+</body>
 </html>
