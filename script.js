@@ -10,7 +10,12 @@ window.scrollTo({
 const cartButton = document.getElementById("cartButton");
 const cartDrawer = document.getElementById("cartDrawer");
 const closeCart = document.getElementById("closeCart");
+const menuButton = document.getElementById("menuButton");
+const mobileMenu = document.getElementById("mobileMenu");
 
+menuButton.addEventListener("click", () => {
+    mobileMenu.classList.toggle("open");
+});
 const cartCount = document.getElementById("cartCount");
 const basketItems = document.getElementById("basketItems");
 const basketTotal = document.getElementById("basketTotal");
