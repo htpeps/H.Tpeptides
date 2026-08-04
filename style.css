@@ -319,3 +319,66 @@ transition:.3s;
 .card button:hover{
 transform:scale(1.05);
 }
+/* ===== HT PEPTIDES V2 HEADER ===== */
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 8%;
+
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(212,175,55,.25);
+}
+
+.gold{
+    color:#d4af37;
+}
+
+.nav{
+    display:flex;
+    gap:30px;
+}
+
+.nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.nav a:hover{
+    color:#d4af37;
+}
+
+.cart-button{
+    background:#d4af37;
+    color:#000;
+
+    border:none;
+
+    padding:12px 18px;
+
+    border-radius:50px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.cart-button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 25px rgba(212,175,55,.35);
+
+}
