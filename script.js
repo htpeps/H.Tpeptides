@@ -1,5 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+history.scrollRestoration = "manual";
+
+window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "instant"
+});
 const cartButton = document.getElementById("cartButton");
 const cartDrawer = document.getElementById("cartDrawer");
 const closeCart = document.getElementById("closeCart");
