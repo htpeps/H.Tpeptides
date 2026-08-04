@@ -19,26 +19,28 @@ closeCart.addEventListener("click", () => {
     cartDrawer.classList.remove("open");
 });
 
-document.querySelectorAll(".addToCart").forEach(button=>{
+document.querySelectorAll(".addToCart").forEach(button => {
 
-    button.addEventListener("click",()=>{
+    button.addEventListener("click", () => {
 
         const name = button.dataset.name;
         const price = Number(button.dataset.price);
 
-        const existing = basket.find(item=>item.name===name);
+        const existing = basket.find(item => item.name === name);
 
         if(existing){
             existing.qty++;
         }else{
             basket.push({
-                name:name,
-                price:price,
+                name,
+                price,
                 qty:1
             });
         }
 
         updateCart();
+
+        cartDrawer.classList.add("open");
 
     });
 
@@ -46,77 +48,68 @@ document.querySelectorAll(".addToCart").forEach(button=>{
 
 function updateCart(){
 
-    basketItems.innerHTML="";
+    basketItems.innerHTML = "";
 
-    if(basket.length===0){
+    if(basket.length === 0){
 
-        basketItems.innerHTML="Your basket is empty.";
+        basketItems.innerHTML = "<p>Your basket is empty.</p>";
 
-        cartCount.textContent="0";
+        cartCount.textContent = "0";
 
-        basketTotal.textContent="0";
+        basketTotal.textContent = "0";
 
         return;
 
     }
 
-    let total=0;
-    let items=0;
+    let total = 0;
+    let items = 0;
 
     basket.forEach((item,index)=>{
 
-        total+=item.price*item.qty;
+        total += item.price * item.qty;
+        items += item.qty;
 
-        items+=item.qty;
+        basketItems.innerHTML += `
+        <div class="cartItem">
 
-        basketItems.innerHTML+=`
-<div class="cartItem">
+            <strong>${item.name}</strong>
 
-<strong>${item.name}</strong><br>
+            <p>£${item.price} × ${item.qty}</p>
 
-£${item.price} × ${item.qty}
+            <button class="minus" data-index="${index}">−</button>
 
-<div style="margin-top:10px">
+            <button class="plus" data-index="${index}">+</button>
 
-<button class="minus" data-index="${index}">−</button>
+            <button class="remove" data-index="${index}">Remove</button>
 
-<button class="plus" data-index="${index}">+</button>
-
-<button class="remove" data-index="${index}">Remove</button>
-
-</div>
-
-<hr>
-
-</div>
-`;
+        </div>
+        `;
 
     });
 
-    cartCount.textContent=items;
+    cartCount.textContent = items;
+    basketTotal.textContent = total;
 
-    basketTotal.textContent=total;
-        basketItems.querySelectorAll(".plus").forEach(button=>{
+    document.querySelectorAll(".plus").forEach(button=>{
 
-        button.addEventListener("click",()=>{
+        button.onclick=()=>{
 
             basket[button.dataset.index].qty++;
 
             updateCart();
 
-        });
+        };
 
     });
 
-    basketItems.querySelectorAll(".minus").forEach(button=>{
+    document.querySelectorAll(".minus").forEach(button=>{
 
-        button.addEventListener("click",()=>{
+        button.onclick=()=>{
 
-            const item=basket[button.dataset.index];
+            basket[button.dataset.index].qty--;
 
-            item.qty--;
-
-            if(item.qty<=0){
+            if(basket[button.dataset.index].qty<=0){
 
                 basket.splice(button.dataset.index,1);
 
@@ -124,49 +117,49 @@ function updateCart(){
 
             updateCart();
 
-        });
+        };
 
     });
 
-    basketItems.querySelectorAll(".remove").forEach(button=>{
+    document.querySelectorAll(".remove").forEach(button=>{
 
-        button.addEventListener("click",()=>{
+        button.onclick=()=>{
 
             basket.splice(button.dataset.index,1);
 
             updateCart();
 
-        });
+        };
 
     });
 
-    checkoutButton.onclick=()=>{
-
-        if(basket.length===0){
-
-            alert("Your basket is empty.");
-
-            return;
-
-        }
-
-        let message="Hello HT Peptides,%0A%0AI'd like to order:%0A%0A";
-
-        basket.forEach(item=>{
-
-            message+=`${item.name} x${item.qty} - £${item.price*item.qty}%0A`;
-
-        });
-
-        message+=`%0AOrder Total: £${basketTotal.textContent}`;
-
-        window.open(
-            "https://wa.me/447456872851?text="+message,
-            "_blank"
-        );
-
-    };
-
 }
+
+checkoutButton.addEventListener("click",()=>{
+
+    if(basket.length===0){
+
+        alert("Your basket is empty.");
+
+        return;
+
+    }
+
+    let message="Hello HT Peptides,%0A%0AI'd like to order:%0A%0A";
+
+    basket.forEach(item=>{
+
+        message += `${item.name} x${item.qty} - £${item.price*item.qty}%0A`;
+
+    });
+
+    message += `%0AOrder Total: £${basketTotal.textContent}`;
+
+    window.open(
+        "https://wa.me/447456872851?text="+message,
+        "_blank"
+    );
+
+});
 
 });
