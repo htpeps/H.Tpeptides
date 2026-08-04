@@ -15,7 +15,8 @@ const mobileMenu = document.getElementById("mobileMenu");
 
 if (menuButton && mobileMenu) {
     menuButton.onclick = function () {
-        mobileMenu.classList.toggle("open");
+        alert("Menu clicked");
+mobileMenu.classList.toggle("open");
     };
 }
 const cartCount = document.getElementById("cartCount");
