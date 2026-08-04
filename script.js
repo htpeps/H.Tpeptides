@@ -1,69 +1,172 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const prices = {
-        "MT2 10mg": 25,
-        "Retatrutide 30mg": 60,
-        "Retatrutide 60mg": 80,
-        "Glow 10mg": 40,
-        "Bacteriostatic Water": 5
-    };
+const cartButton = document.getElementById("cartButton");
+const cartDrawer = document.getElementById("cartDrawer");
+const closeCart = document.getElementById("closeCart");
 
-    const basket = [];
+const cartCount = document.getElementById("cartCount");
+const basketItems = document.getElementById("basketItems");
+const basketTotal = document.getElementById("basketTotal");
+const checkoutButton = document.getElementById("checkoutButton");
 
-    const basketItems = document.getElementById("basket-items");
-    const basketCount = document.getElementById("basket-count");
-    const checkout = document.getElementById("checkout");
+let basket = [];
 
-    document.querySelectorAll(".card button").forEach(button => {
+cartButton.addEventListener("click", () => {
+    cartDrawer.classList.add("open");
+});
 
-        button.addEventListener("click", () => {
+closeCart.addEventListener("click", () => {
+    cartDrawer.classList.remove("open");
+});
 
-            const card = button.closest(".card");
-            const product = card.querySelector("h3").textContent;
+document.querySelectorAll(".addToCart").forEach(button=>{
 
-            basket.push(product);
+    button.addEventListener("click",()=>{
 
-            updateBasket();
+        const name = button.dataset.name;
+        const price = Number(button.dataset.price);
+
+        const existing = basket.find(item=>item.name===name);
+
+        if(existing){
+            existing.qty++;
+        }else{
+            basket.push({
+                name:name,
+                price:price,
+                qty:1
+            });
+        }
+
+        updateCart();
+
+    });
+
+});
+
+function updateCart(){
+
+    basketItems.innerHTML="";
+
+    if(basket.length===0){
+
+        basketItems.innerHTML="Your basket is empty.";
+
+        cartCount.textContent="0";
+
+        basketTotal.textContent="0";
+
+        return;
+
+    }
+
+    let total=0;
+    let items=0;
+
+    basket.forEach((item,index)=>{
+
+        total+=item.price*item.qty;
+
+        items+=item.qty;
+
+        basketItems.innerHTML+=`
+<div class="cartItem">
+
+<strong>${item.name}</strong><br>
+
+£${item.price} × ${item.qty}
+
+<div style="margin-top:10px">
+
+<button class="minus" data-index="${index}">−</button>
+
+<button class="plus" data-index="${index}">+</button>
+
+<button class="remove" data-index="${index}">Remove</button>
+
+</div>
+
+<hr>
+
+</div>
+`;
+
+    });
+
+    cartCount.textContent=items;
+
+    basketTotal.textContent=total;
+        basketItems.querySelectorAll(".plus").forEach(button=>{
+
+        button.addEventListener("click",()=>{
+
+            basket[button.dataset.index].qty++;
+
+            updateCart();
 
         });
 
     });
 
-    function updateBasket(){
+    basketItems.querySelectorAll(".minus").forEach(button=>{
 
-        basketItems.innerHTML = "";
+        button.addEventListener("click",()=>{
 
-        let total = 0;
+            const item=basket[button.dataset.index];
 
-        basket.forEach(item => {
+            item.qty--;
 
-            basketItems.innerHTML += `
-                ${item} - £${prices[item]}<br>
-            `;
+            if(item.qty<=0){
 
-            total += prices[item];
+                basket.splice(button.dataset.index,1);
+
+            }
+
+            updateCart();
 
         });
 
-        basketItems.innerHTML += `
-            <hr>
-            <strong>Total: £${total}</strong>
-        `;
+    });
 
-        basketCount.textContent = basket.length;
+    basketItems.querySelectorAll(".remove").forEach(button=>{
 
-        const message = `Hello HT Peptides,
+        button.addEventListener("click",()=>{
 
-I'd like to order:
+            basket.splice(button.dataset.index,1);
 
-${basket.map(item => `${item} - £${prices[item]}`).join("\n")}
+            updateCart();
 
-Total: £${total}`;
+        });
 
-        checkout.href =
-        "https://wa.me/447456872851?text=" +
-        encodeURIComponent(message);
+    });
 
-    }
+    checkoutButton.onclick=()=>{
+
+        if(basket.length===0){
+
+            alert("Your basket is empty.");
+
+            return;
+
+        }
+
+        let message="Hello HT Peptides,%0A%0AI'd like to order:%0A%0A";
+
+        basket.forEach(item=>{
+
+            message+=`${item.name} x${item.qty} - £${item.price*item.qty}%0A`;
+
+        });
+
+        message+=`%0AOrder Total: £${basketTotal.textContent}`;
+
+        window.open(
+            "https://wa.me/447456872851?text="+message,
+            "_blank"
+        );
+
+    };
+
+}
 
 });
