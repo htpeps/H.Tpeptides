@@ -1,31 +1,35 @@
-const basket = [];
+document.addEventListener("DOMContentLoaded", () => {
 
-const basketItems = document.getElementById("basket-items");
-const basketCount = document.getElementById("basket-count");
-const checkout = document.getElementById("checkout");
+    const basket = [];
 
-console.log("Script loaded");
+    const basketItems = document.getElementById("basket-items");
+    const basketCount = document.getElementById("basket-count");
+    const checkout = document.getElementById("checkout");
 
-document.querySelectorAll(".card button").forEach(button => {
-    button.addEventListener("click", () => {
+    document.querySelectorAll(".card button").forEach(button => {
 
-        const card = button.closest(".card");
-        const product = card.querySelector("h3").innerText;
+        button.addEventListener("click", () => {
 
-        basket.push(product);
+            const card = button.closest(".card");
+            const product = card.querySelector("h3").textContent;
 
-        basketItems.innerHTML = basket.join("<br>");
-        basketCount.innerText = basket.length;
+            basket.push(product);
 
-        const message =
-`Hello HT Peptides,
+            basketItems.innerHTML = basket.join("<br>");
+            basketCount.textContent = basket.length;
+
+            const message = `Hello HT Peptides,
 
 I'd like to order:
 
 ${basket.join("\n")}`;
 
-        checkout.href =
-"https://wa.me/447456872851?text=" + encodeURIComponent(message);
+            checkout.href =
+                "https://wa.me/447456872851?text=" +
+                encodeURIComponent(message);
+
+        });
 
     });
+
 });
