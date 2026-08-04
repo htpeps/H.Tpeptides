@@ -167,3 +167,105 @@ font-size:34px;
 }
 
 }
+/* ---------- TRUST SECTION ---------- */
+
+.trust{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+padding:70px 8%;
+background:#0d0d0d;
+}
+
+.trust-box{
+background:#141414;
+border:1px solid #d4af37;
+border-radius:15px;
+padding:35px 25px;
+text-align:center;
+transition:.35s ease;
+}
+
+.trust-box:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 35px rgba(212,175,55,.25);
+border-color:#f2cc60;
+}
+
+.trust-box span{
+display:block;
+font-size:42px;
+margin-bottom:18px;
+}
+
+.trust-box h3{
+color:#d4af37;
+font-size:22px;
+margin-bottom:12px;
+}
+
+.trust-box p{
+color:#d0d0d0;
+font-size:15px;
+line-height:1.6;
+}
+
+/* ---------- BETTER HERO ---------- */
+
+.hero{
+padding:140px 20px;
+background:
+linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.8)),
+linear-gradient(135deg,#111,#000);
+}
+
+.hero h1{
+font-size:56px;
+letter-spacing:1px;
+}
+
+.hero p{
+font-size:20px;
+}
+
+/* ---------- BUTTONS ---------- */
+
+.button{
+border-radius:50px;
+padding:16px 38px;
+box-shadow:0 8px 25px rgba(212,175,55,.25);
+}
+
+.button:hover{
+transform:translateY(-3px);
+box-shadow:0 12px 30px rgba(212,175,55,.45);
+}
+
+/* ---------- HEADER ---------- */
+
+header{
+backdrop-filter:blur(10px);
+z-index:999;
+}
+
+.logo{
+text-shadow:0 0 15px rgba(212,175,55,.35);
+}
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:768px){
+
+.trust{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:38px;
+}
+
+.hero{
+padding:100px 20px;
+}
+
+}
